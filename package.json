@@ -15,7 +15,7 @@
     "israel",
     "safety"
   ],
-  "author": "",
+  "author": "Yair Zvuloon",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.2",
