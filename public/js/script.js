@@ -1,6 +1,5 @@
 /* ───── constants ───── */
-const SIREN_FILE = "siren.mp3"; // Keep a fallback or default siren file
-const MIN_SEC = 5;
+const MIN_SEC = 1;
 const NATIONWIDE = "Across the country";
 const DEBUG = true; // Set to true for debugging
 const MAX_RETRIES = 3;
@@ -23,10 +22,10 @@ const CATEGORY_ICONS = {
 
 // New: Define sound files for each category
 const CATEGORY_SOUNDS = {
-  1: "missiles.mp3",
-  2: "hostileAircraft.mp3",
-  14: "flash.mp3",
-  13: "update.mp3",
+  1: "sounds/missiles.mp3",
+  2: "sounds/hostileAircraft.mp3",
+  14: "sounds/flash.mp3",
+  13: "sounds/update.mp3",
 };
 
 // NEW: Define sound durations for each category (in milliseconds)
@@ -286,7 +285,7 @@ async function poll() {
         (a, b) => new Date(b.alertDate) - new Date(a.alertDate)
       )[0];
 
-      const soundFile = CATEGORY_SOUNDS[newestAlert.category] || SIREN_FILE;
+      const soundFile = CATEGORY_SOUNDS[newestAlert.category];
       const duration = CATEGORY_SOUND_DURATIONS[newestAlert.category] || 30000;
       const alertSoundId = `${newestAlert.alertDate}-${newestAlert.category}${
         newestAlert.nw ? "N" : ""
@@ -447,7 +446,7 @@ function createTestSoundButton(cat, desc) {
     }</span> ${desc}`;
 
     button.onclick = async () => {
-      const soundFile = CATEGORY_SOUNDS[cat] || SIREN_FILE;
+      const soundFile = CATEGORY_SOUNDS[cat];
       const duration = CATEGORY_SOUND_DURATIONS[cat] || 30000;
 
       debugLog(

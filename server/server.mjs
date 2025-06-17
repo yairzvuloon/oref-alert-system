@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 /* ---------- 2. Static front-end ---------- */
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 /* ---------- 3. Helpers ---------- */
 const fmtDMY = (d) => d.toLocaleDateString("en-GB").split("/").join("."); // DD.MM.YYYY

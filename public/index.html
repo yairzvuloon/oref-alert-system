@@ -1,102 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>Oref Alerts Monitor</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>Oref Alerts Monitor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+  <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
-<div class="container">
-  <header class="header">
-    <h1><span class="emoji">🚨</span> Oref Alerts Monitor</h1>
-    <div class="header-right">
+  <div class="container">
+    <header class="header">
+      <h1><span class="emoji">🚨</span> Oref Alerts Monitor</h1>
+      <div class="header-right">
         <div class="status-badge">
-            <div class="pulse"></div>
-            <span>Live Monitoring</span>
+          <div class="pulse"></div>
+          <span>Live Monitoring</span>
         </div>
         <button id="darkModeToggle" class="btn-icon" aria-label="Toggle dark mode">
-            ☀️
+          ☀️
         </button>
-    </div>
-  </header>
+      </div>
+    </header>
 
-  <section class="controls">
-    <div class="controls-header">
-      <h2>⚙️ Settings</h2>
-      <div class="last-update">
-        <span>Last update:</span>
-        <strong id="lastLbl">—</strong>
-      </div>
-    </div>
-    
-    <div class="controls-grid">
-      <div class="control-group">
-        <label for="cityIn">📍 City</label>
-        <input id="cityIn" type="text" value="Yad Binyamin" placeholder="Enter city name" autocomplete="off">
-      </div>
-      
-      <div class="control-group">
-        <label for="intervalIn">🔄 Refresh Interval (seconds)</label>
-        <input id="intervalIn" type="number" min="5" step="5" value="5">
-      </div>
-      
-      <div class="control-group">
-        <label for="lookbackIn">⏱️ Alert Range (seconds)</label>
-        <input id="lookbackIn" type="number" min="1" step="1" value="1">
-      </div>
-      
-      <div class="control-group">
-        <label for="histSel">📅 History Period</label>
-        <select id="histSel">
-          <option value="day" selected>Last 24 Hours</option>
-          <option value="week">Last Week</option>
-          <option value="month">Last Month</option>
-        </select>
-      </div>
-    </div>
-    
-    <div class="category-filters">
-      <h3>🏷️ Filter by Category</h3>
-      <div id="categoryGrid" class="category-grid">
+    <section class="controls">
+      <div class="controls-header">
+        <h2>⚙️ Settings</h2>
+        <div class="last-update">
+          <span>Last update:</span>
+          <strong id="lastLbl">—</strong>
         </div>
-    </div>
-    
-    <div class="action-buttons">
-      <button id="autoBtn" class="btn btn-primary">⏸️ Pause Updates</button>
+      </div>
 
-      <div class="dropdown">
+      <div class="controls-grid">
+        <div class="control-group">
+          <label for="cityIn">📍 City</label>
+          <input id="cityIn" type="text" value="Yad Binyamin" placeholder="Enter city name" autocomplete="off">
+        </div>
+
+        <div class="control-group">
+          <label for="intervalIn">🔄 Refresh Interval (seconds)</label>
+          <input id="intervalIn" type="number" min="1" step="1" value="5">
+        </div>
+
+        <div class="control-group">
+          <label for="lookbackIn">⏱️ Alert Range (seconds)</label>
+          <input id="lookbackIn" type="number" min="1" step="1" value="5">
+        </div>
+
+        <div class="control-group">
+          <label for="histSel">📅 History Period</label>
+          <select id="histSel">
+            <option value="day" selected>Last 24 Hours</option>
+            <option value="week">Last Week</option>
+            <option value="month">Last Month</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="category-filters">
+        <h3>🏷️ Filter by Category</h3>
+        <div id="categoryGrid" class="category-grid">
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="autoBtn" class="btn btn-primary">⏸️ Pause Updates</button>
+
+        <div class="dropdown">
           <button id="testSoundDropdownBtn" class="btn btn-danger">
-              🔊 Test Sounds <span class="dropdown-arrow">▼</span>
+            🔊 Test Sounds <span class="dropdown-arrow">▼</span>
           </button>
           <div id="testSoundDropdownContent" class="dropdown-content">
-              </div>
+          </div>
+        </div>
+
+        <button id="stopSirenBtn" class="btn btn-secondary">⏹️ Stop Sound</button>
       </div>
+    </section>
 
-      <button id="stopSirenBtn" class="btn btn-secondary">⏹️ Stop Sound</button>
-    </div>
-  </section>
-
-  <section class="alerts-container">
-    <div class="alerts-header">
-      <h2>📋 Alert History</h2>
-      <button id="sortBtn" class="sort-button">
-        <span>Sort</span>
-        <span>↓</span>
-      </button>
-    </div>
-    <div id="log">
-      <div class="empty-state">
-        <div class="empty-state-icon">📭</div>
-        <p>No alerts yet. Monitoring in progress...</p>
+    <section class="alerts-container">
+      <div class="alerts-header">
+        <h2>📋 Alert History</h2>
+        <button id="sortBtn" class="sort-button">
+          <span>Sort</span>
+          <span>↓</span>
+        </button>
       </div>
-    </div>
-  </section>
-</div>
+      <div id="log">
+        <div class="empty-state">
+          <div class="empty-state-icon">📭</div>
+          <p>No alerts yet. Monitoring in progress...</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
-<audio id="alarm" preload="auto" loop></audio>
+  <audio id="alarm" preload="auto" loop></audio>
 
-<script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
+
 </html>
