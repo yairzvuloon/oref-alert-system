@@ -249,6 +249,7 @@ oref-alert-system/
 │       └── favicon.svg     # Site icon
 ├── .gitignore              # Git ignore rules
 ├── package.json            # Node.js dependencies and scripts
+├── LICENSE
 ├── package-lock.json       # Dependency lock file
 └── README.md              # This file
 ```
