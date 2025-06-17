@@ -22,10 +22,10 @@ const CATEGORY_ICONS = {
 
 // New: Define sound files for each category
 const CATEGORY_SOUNDS = {
-  1: "sounds/missiles.mp3",
-  2: "sounds/hostileAircraft.mp3",
-  14: "sounds/flash.mp3",
-  13: "sounds/update.mp3",
+  1: "audio/missiles.mp3",
+  2: "audio/hostileAircraft.mp3",
+  14: "audio/flash.mp3",
+  13: "audio/update.mp3",
 };
 
 // NEW: Define sound durations for each category (in milliseconds)
